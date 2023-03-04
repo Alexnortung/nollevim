@@ -20,8 +20,8 @@
     visual.">" = ">gv";
 
     # Move text under cursor up and down
-    visual."<A-j>" = ":m .+1<CR>==";
-    visual."<A-k>" = ":m .-2<CR>==";
+    visual."<A-j>" = ":m .+1<CR>==gv";
+    visual."<A-k>" = ":m .-2<CR>==gv";
 
     # When pasting in visual mode, do not yank the replaces text
     visual."p" = "\"_dP";
