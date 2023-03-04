@@ -18,15 +18,15 @@
         list = [
           {
             key = ["l" "<CR>" "o"];
-            action = ''require("nvim-tree.config").nvim_tree_callback "edit"'';
+            action = ''edit'';
           }
           {
             key = "h";
-            action = ''require("nvim-tree.config").nvim_tree_callback "close_node"'';
+            action = ''close_node'';
           }
           {
             key = "v";
-            action = ''require("nvim-tree.config").nvim_tree_callback "vsplit"'';
+            action = ''vsplit'';
           }
           # { key = "v", cb = require("nvim-tree.config").nvim_tree_callback "vsplit" },
         ];
