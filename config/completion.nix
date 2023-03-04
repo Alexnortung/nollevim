@@ -1,5 +1,5 @@
 {
-  nvim-cmp = {
+  plugins.nvim-cmp = {
     enable = true;
     # preselect = "None";
     snippet.expand = ''
@@ -102,4 +102,50 @@
 
     experimental.ghost_text = true;
   };
+
+  extraConfigLuaPre = ''
+    mycmp = require'cmp'
+    cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
+    check_backspace = function()
+        local col = vim.fn.col "." - 1
+        return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+    end
+
+    --   פּ ﯟ   some other good icons
+    kind_icons = {
+      Text = "",
+      Method = "m",
+      Function = "",
+      Constructor = "",
+      Field = "",
+      Variable = "",
+      Class = "",
+      Interface = "",
+      Module = "",
+      Property = "",
+      Unit = "",
+      Value = "",
+      Enum = "",
+      Keyword = "",
+      Snippet = "",
+      Color = "",
+      File = "",
+      Reference = "",
+      Folder = "",
+      EnumMember = "",
+      Constant = "",
+      Struct = "",
+      Event = "",
+      Operator = "",
+      TypeParameter = "",
+    }
+  '';
+
+  extraConfigLuaPost = ''
+    mycmp.event:on(
+        'confirm_done',
+        cmp_autopairs.on_confirm_done()
+    )
+  '';
 }

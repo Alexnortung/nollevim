@@ -1,8 +1,12 @@
 {
-  description = "A nixvim configuration";
+  description = "Alexnortung's Nixvim config";
 
   inputs = {
-    nixvim.url = "github:pta2002/nixvim";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixvim = {
+      url = "github:pta2002/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils.url = "github:numtide/flake-utils";
     vim-extra-plugins.url = "github:m15a/nixpkgs-vim-extra-plugins";
   };
@@ -28,7 +32,7 @@
         # Run `nix check .` to verify that your config is not broken
         default = nixvim.lib.${system}.check.checkNvim {
           inherit nvim;
-          name = "A nixvim configuration";
+          name = "Nollevim";
         };
       };
 

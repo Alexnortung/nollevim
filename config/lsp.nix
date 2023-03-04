@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   plugins.lsp = {
     enable = true;
     servers = {
@@ -20,4 +20,13 @@
   plugins.lsp-lines = {
     enable = true;
   };
+
+  extraPlugins = with pkgs.vimPlugins; [
+    lsp_signature-nvim
+  ];
+
+  extraPackages = with pkgs; [
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+  ];
 }

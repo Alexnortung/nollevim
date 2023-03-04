@@ -1,5 +1,5 @@
-{
-  telescope = {
+{pkgs, ...}: {
+  plugins.telescope = {
     enable = true;
     defaults = {
       # path_display = "smart";
@@ -18,9 +18,9 @@
       };
     };
     extensions = {
-      project-nvim = {
-        enable = true;
-      };
+      # project-nvim = {
+      #   enable = true;
+      # };
       #   media_files = {
       #     enable = true;
       #     find_cmd = "rg";
@@ -28,4 +28,8 @@
       #   };
     };
   };
+
+  extraPackages = with pkgs; [
+    ripgrep
+  ];
 }

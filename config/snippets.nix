@@ -1,5 +1,5 @@
-{
-  luasnip = {
+{pkgs, ...}: {
+  plugins.luasnip = {
     enable = true;
 
     fromVscode = [
@@ -14,4 +14,12 @@
       }
     ];
   };
+
+  extraPlugins = with pkgs.vimPlugins; [
+    friendly-snippets
+  ];
+
+  extraConfigLuaPre = ''
+    luasnip = require'luasnip'
+  '';
 }
