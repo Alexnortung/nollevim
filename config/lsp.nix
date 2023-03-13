@@ -17,9 +17,9 @@
       elixirls.enable = true;
     };
   };
-  plugins.lsp-lines = {
-    enable = true;
-  };
+  # plugins.lsp-lines = {
+  #   enable = true;
+  # };
 
   extraPlugins = with pkgs.vimPlugins; [
     lsp_signature-nvim
