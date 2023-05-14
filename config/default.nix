@@ -10,6 +10,7 @@
     ./copilot.nix
     ./extra-syntax-highlight.nix
     ./globals.nix
+    ./git.nix
     ./keymaps.nix
     ./lsp.nix
     ./null-ls.nix
