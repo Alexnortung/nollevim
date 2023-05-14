@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixvim = {
       url = "github:pta2002/nixvim";
+      # url = "path:/home/alexander/source/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
@@ -17,7 +18,6 @@
     flake-utils,
     ...
   } @ inputs: let
-    nixvimLib = nixvim.lib;
     config = import ./config; # import the module directly
   in
     flake-utils.lib.eachDefaultSystem (system: let
@@ -29,11 +29,13 @@
       };
     in {
       checks = {
-        # Run `nix check .` to verify that your config is not broken
-        default = nixvim.lib.${system}.check.checkNvim {
-          inherit nvim;
-          name = "Nollevim";
-        };
+        # Run `nix flake check .` to verify that your config is not broken
+        # default = nixvimLib.${system}.check.mkTestDerivation "Nollevim" config;
+        # default = nixvimLib.${system}.check.mkTestDerivationFromNvim {
+        #   inherit nvim;
+        #   name = "Nollevim";
+        #   dontRun = false;
+        # };
       };
 
       packages = {

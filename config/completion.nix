@@ -2,11 +2,7 @@
   plugins.nvim-cmp = {
     enable = true;
     # preselect = "None";
-    snippet.expand = ''
-      function(args)
-        luasnip.lsp_expand(args.body)
-      end
-    '';
+    snippet.expand = "luasnip";
     mappingPresets = ["insert" "cmdline"];
     mapping = {
       "<C-b>" = ''cmp.mapping.scroll_docs(-4)'';
