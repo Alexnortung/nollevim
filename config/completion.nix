@@ -95,8 +95,6 @@
     #   behavior = "Replace";
     #   select = false;
     # };
-
-    experimental.ghost_text = true;
   };
 
   extraConfigLuaPre = ''
