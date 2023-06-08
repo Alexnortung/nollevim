@@ -12,6 +12,7 @@
     ./globals.nix
     ./git.nix
     ./keymaps.nix
+    ./leap.nix
     ./lsp.nix
     ./null-ls.nix
     ./nvim-tree.nix
