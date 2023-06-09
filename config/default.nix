@@ -17,6 +17,7 @@
     ./null-ls.nix
     ./nvim-tree.nix
     ./options.nix
+    ./scrollbar.nix
     ./snippets.nix
     ./surround.nix
     ./telescope.nix
