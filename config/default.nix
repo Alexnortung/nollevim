@@ -14,6 +14,7 @@
     ./keymaps.nix
     ./leap.nix
     ./lsp.nix
+    ./markdown.nix
     ./null-ls.nix
     ./nvim-tree.nix
     ./options.nix
