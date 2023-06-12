@@ -15,6 +15,7 @@
       # denols.enable = true;
       vuels.enable = true;
       elixirls.enable = true;
+      tailwindcss.enable = true;
     };
   };
   # plugins.lsp-lines = {
