@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   plugins.lsp = {
     enable = true;
     servers = {
@@ -11,8 +11,19 @@
       jsonls.enable = true;
       eslint.enable = true;
       gdscript.enable = true;
-      tsserver.enable = true;
-      # denols.enable = true;
+      tsserver = {
+        enable = true;
+        extraOptions = {
+          root_dir = { __raw = ''require("lspconfig.util").root_pattern("tsconfig.json")''; };
+          single_file_support = false;
+        };
+      };
+      denols = {
+        enable = true;
+        extraOptions = {
+          root_dir = { __raw = ''require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")''; };
+        };
+      };
       vuels.enable = true;
       elixirls.enable = true;
       tailwindcss.enable = true;
