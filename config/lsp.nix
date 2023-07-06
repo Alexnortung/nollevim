@@ -8,7 +8,19 @@
       rust-analyzer.enable = true;
       html.enable = true;
       cssls.enable = true;
-      jsonls.enable = true;
+      jsonls = {
+        enable = true;
+        extraOptions = {
+          settings = {
+            json = {
+              schemas = { __raw = "require('schemastore').json.schemas()"; };
+              validate = {
+                enable = true;
+              };
+            };
+          };
+        };
+      };
       eslint.enable = true;
       gdscript.enable = true;
       tsserver = {
@@ -35,6 +47,7 @@
 
   extraPlugins = with pkgs.vimPlugins; [
     lsp_signature-nvim
+    SchemaStore-nvim
   ];
 
   extraPackages = with pkgs; [
