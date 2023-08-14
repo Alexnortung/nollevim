@@ -36,7 +36,8 @@
           root_dir = { __raw = ''require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")''; };
         };
       };
-      vuels.enable = true;
+      # vuels.enable = true;
+      volar.enable = true;
       elixirls.enable = true;
       tailwindcss.enable = true;
     };
