@@ -13,26 +13,26 @@
   ];
 
   extraConfigLuaPost = ''
-    require('nvim-treesitter.configs').setup {
-        ['ensure_installed'] = 'all',
-        ['highlight'] = {
-            ['enable'] = true
-        },
-        ['indent'] = {
-            ['enable'] = true
-        },
-        context_commentstring = {
-            enable = true,
-            enable_autocmd = false,
-        },
-        rainbow = {
-            enable = true,
-            extended_mode = true,
-        },
-        -- autotag = {
-        --     enable = true,
-        -- },
-    }
+    --require('nvim-treesitter.configs').setup {
+    --    ['ensure_installed'] = 'all',
+    --    ['highlight'] = {
+    --        ['enable'] = true
+    --    },
+    --    ['indent'] = {
+    --        ['enable'] = true
+    --    },
+    --    context_commentstring = {
+    --        enable = true,
+    --        enable_autocmd = false,
+    --    },
+    --    rainbow = {
+    --        enable = true,
+    --        extended_mode = true,
+    --    },
+    --    -- autotag = {
+    --    --     enable = true,
+    --    -- },
+    --}
 
     require('nvim-ts-autotag').setup()
   '';
