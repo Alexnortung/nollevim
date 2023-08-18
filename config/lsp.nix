@@ -2,7 +2,7 @@
   plugins.lsp = {
     enable = true;
     servers = {
-      clangd.enable = true;
+      # clangd.enable = true;
       rnix-lsp.enable = true;
       pyright.enable = true;
       rust-analyzer.enable = true;
@@ -38,7 +38,7 @@
       };
       # vuels.enable = true;
       volar.enable = true;
-      elixirls.enable = true;
+      # elixirls.enable = true;
       tailwindcss.enable = true;
     };
   };
