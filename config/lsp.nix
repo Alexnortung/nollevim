@@ -40,6 +40,7 @@
       volar.enable = true;
       # elixirls.enable = true;
       tailwindcss.enable = true;
+      intelephense.enable = true;
     };
   };
   # plugins.lsp-lines = {
