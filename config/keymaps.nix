@@ -40,7 +40,7 @@
     normal."gr" = "<cmd>lua vim.lsp.buf.references()<CR>";
     normal."<leader>ck" = "<cmd>lua vim.diagnostic.open_float()<CR>";
     normal."<leader>ca" = "<cmd>lua vim.lsp.buf.code_action()<CR>";
-    normal."<leader>cf" = "<cmd>lua vim.lsp.buf.format()<CR>";
+    normal."<leader>cf" = "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3500 })<CR>";
 
     # Telescope
     normal."<leader>p" = "<cmd>Telescope find_files<CR>";

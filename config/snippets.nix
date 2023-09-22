@@ -9,7 +9,7 @@
       {
         lazyLoad = true;
         paths = [
-          ./snippets
+          ../snippets
         ];
       }
     ];

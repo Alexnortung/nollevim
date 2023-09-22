@@ -3,6 +3,12 @@
     enable = true;
     servers = {
       # clangd.enable = true;
+      # efm = {
+      #   enable = true;
+      #   filetypes = [
+      #     "typescript"
+      #   ];
+      # };
       rnix-lsp.enable = true;
       pyright.enable = true;
       rust-analyzer.enable = true;
@@ -45,6 +51,17 @@
   };
   # plugins.lsp-lines = {
   #   enable = true;
+  # };
+
+  # plugins.efmls-configs = {
+  #   enable = true;
+  #
+  #   setup = {
+  #     typescript = {
+  #       formatter = ["prettier"];
+  #       linter = ["eslint"];
+  #     };
+  #   };
   # };
 
   extraPlugins = with pkgs.vimPlugins; [

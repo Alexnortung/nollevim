@@ -1,10 +1,12 @@
 {
   # Import all your configuration modules here
   imports = [
+    ./appearance/colorscheme.nix
+    ./appearance/scrollbar.nix
+    ./appearance/treesitter.nix
     ./autopairs.nix
     ./basic-plugins.nix
     ./bufferline.nix
-    ./colorscheme.nix
     ./commenting.nix
     ./completion.nix
     ./copilot.nix
@@ -15,15 +17,13 @@
     ./leap.nix
     ./lsp.nix
     ./markdown.nix
-    ./null-ls.nix
+    ./formatting.nix
     ./nvim-tree.nix
     ./options.nix
-    ./scrollbar.nix
     ./snippets.nix
     ./surround.nix
     ./telescope.nix
     # ./terminal.nix
-    ./treesitter.nix
     ./which-key.nix
   ];
 }
