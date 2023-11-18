@@ -13,22 +13,25 @@
     vim-extra-plugins.url = "github:m15a/nixpkgs-vim-extra-plugins";
   };
 
-  outputs = {
-    nixpkgs,
-    nixvim,
-    flake-utils,
-    ...
-  } @ inputs: let
-    config = import ./config; # import the module directly
-  in
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {inherit system; config.allowUnfree = true;};
+  outputs =
+    { nixpkgs
+    , nixvim
+    , flake-utils
+    , ...
+    } @ inputs:
+    let
+      config = import ./config; # import the module directly
+    in
+    flake-utils.lib.eachDefaultSystem (system:
+    let
+      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
       nixvim' = nixvim.legacyPackages.${system};
       nvim = nixvim'.makeNixvimWithModule {
         inherit pkgs;
         module = config;
       };
-    in {
+    in
+    {
       checks = {
         # Run `nix flake check .` to verify that your config is not broken
         # default = nixvimLib.${system}.check.mkTestDerivation "Nollevim" config;
