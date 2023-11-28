@@ -3,12 +3,6 @@
     enable = true;
     servers = {
       # clangd.enable = true;
-      # efm = {
-      #   enable = true;
-      #   filetypes = [
-      #     "typescript"
-      #   ];
-      # };
       rnix-lsp.enable = true;
       pyright.enable = true;
       rust-analyzer.enable = true;

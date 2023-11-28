@@ -3,7 +3,7 @@
     enable = true;
     # preselect = "None";
     snippet.expand = "luasnip";
-    mappingPresets = ["insert" "cmdline"];
+    # mappingPresets = ["insert" "cmdline"];
     mapping = {
       "<C-b>" = ''cmp.mapping.scroll_docs(-4)'';
       "<C-f>" = ''cmp.mapping.scroll_docs(4)'';
@@ -22,7 +22,7 @@
       "<C-e>" = "cmp.mapping.abort()";
       "<CR>" = "cmp.mapping.confirm({ select = true })";
       "<Tab>" = {
-        modes = ["i" "s"];
+        modes = [ "i" "s" ];
         action = ''
           function(fallback)
             if luasnip.jumpable(1) then
@@ -42,7 +42,7 @@
         '';
       };
       "<S-Tab>" = {
-        modes = ["i" "s"];
+        modes = [ "i" "s" ];
         action = ''
           function(fallback)
             if cmp.visible() then
@@ -87,10 +87,10 @@
 
     sources = [
       # { name = "copilot"; }
-      {name = "luasnip";} #-- For luasnip users.
-      {name = "nvim_lsp";}
-      {name = "path";}
-      {name = "buffer";}
+      { name = "luasnip"; } #-- For luasnip users.
+      { name = "nvim_lsp"; }
+      { name = "path"; }
+      { name = "buffer"; }
     ];
 
     # confirm_opts = {

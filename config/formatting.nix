@@ -1,21 +1,41 @@
-{ pkgs, ... }: {
-  plugins.null-ls = {
+{ pkgs
+, lib
+, config
+, ...
+}:
+let
+  js = {
+    formatter = "prettier";
+    linter = "eslint_d";
+  };
+  langueageSetup = {
+    javascript = js;
+    javascriptreact = js;
+    "javascript.jsx" = js;
+    typescript = js;
+    typescriptreact = js;
+    "typescript.tsx" = js;
+  };
+  filetypes = lib.attrNames langueageSetup;
+in
+{
+  plugins.lsp.servers.efm = {
     enable = true;
-    sources.formatting = {
-      prettier.enable = true;
-      # prettier_d_slim.enable = true;
-      # eslint_d.enable = true;
-      # eslint.enable = true;
-      alejandra.enable = true;
-      # phpcbf.enable = true;
+    filetypes = filetypes;
+    extraOptions = {
+      init_options = {
+        documentFormatting = true;
+        documentRangeFormatting = true;
+      };
+      # settings = {
+      #   languages = { __raw = ''require('efmls-configs.defaults').languages()''; };
+      # };
     };
   };
-
-  extraPlugins = with pkgs.vimPlugins; [
-  ];
-  extraPackages = with pkgs; [
-    # nodePackages.prettier
-  ];
+  plugins.efmls-configs = {
+    enable = true;
+    setup = langueageSetup;
+  };
 
   plugins.lsp-format = {
     enable = true;
