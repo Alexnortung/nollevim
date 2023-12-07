@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    plugins = {
+      url = "github:NixNeovim/NixNeovimPlugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       # url = "github:Alexnortung/nixvim/intelephense";
@@ -10,7 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
-    vim-extra-plugins.url = "github:m15a/nixpkgs-vim-extra-plugins";
   };
 
   outputs =
@@ -29,6 +32,9 @@
       nvim = nixvim'.makeNixvimWithModule {
         inherit pkgs;
         module = config;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
     in
     {

@@ -1,9 +1,14 @@
 {
+  enableMan = false;
+
   # Import all your configuration modules here
   imports = [
     ./appearance/colorscheme.nix
     ./appearance/scrollbar.nix
     ./appearance/treesitter.nix
+    ./misc
+
+    # Files
     ./autopairs.nix
     ./basic-plugins.nix
     ./bufferline.nix

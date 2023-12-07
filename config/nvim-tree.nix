@@ -1,4 +1,23 @@
 { helpers, ... }: {
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>nn";
+      action = "<cmd>NvimTreeToggle<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>nf";
+      action = "<cmd>NvimTreeFindFile<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>nr";
+      action = "<cmd>NvimTreeRefresh<cr>";
+    }
+  ];
+
   plugins.nvim-tree = {
     enable = true;
 

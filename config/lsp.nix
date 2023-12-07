@@ -5,7 +5,11 @@
       # clangd.enable = true;
       rnix-lsp.enable = true;
       pyright.enable = true;
-      rust-analyzer.enable = true;
+      rust-analyzer = {
+        enable = true;
+        installCargo = true;
+        installRustc = true;
+      };
       html.enable = true;
       cssls.enable = true;
       jsonls = {
@@ -57,6 +61,69 @@
   #     };
   #   };
   # };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "gD";
+      action = "vim.lsp.buf.declaration";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "gd";
+      action = "vim.lsp.buf.definition";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "K";
+      action = "vim.lsp.buf.hover";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "gr";
+      action = "vim.lsp.buf.references";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "gi";
+      action = "vim.lsp.buf.implementation";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "<C-k>";
+      action = "vim.lsp.buf.signature_help";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "<leader>ck";
+      action = "vim.diagnostic.open_float";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "<leader>ca";
+      action = "vim.lsp.buf.code_action";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "<leader>cf";
+      action = "vim.lsp.buf.format";
+      lua = true;
+    }
+    {
+      mode = "n";
+      key = "<leader>rn";
+      action = "vim.lsp.buf.rename";
+      lua = true;
+    }
+  ];
 
   extraPlugins = with pkgs.vimPlugins; [
     lsp_signature-nvim

@@ -1,11 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   plugins.telescope = {
     enable = true;
     defaults = {
       # path_display = "smart";
       winblend = 5;
-      borderchars = [" " " " " " " " " " " " " " " "];
-      border = [];
+      borderchars = [ " " " " " " " " " " " " " " " " ];
+      border = [ ];
       prompt_prefix = " 🤓 ";
       entry_prefix = "   ";
       selection_caret = "🤌 ";
@@ -28,6 +28,39 @@
       #   };
     };
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>p";
+      action = "<cmd>Telescope find_files<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>ff";
+      action = "<cmd>Telescope find_files<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>fl";
+      action = "<cmd>Telescope live_grep<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>fr";
+      action = "<cmd>Telescope resume<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>fb";
+      action = "<cmd>Telescope buffers<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>fp";
+      action = "<cmd>Telescope projects<cr>";
+    }
+  ];
 
   extraPackages = with pkgs; [
     ripgrep
