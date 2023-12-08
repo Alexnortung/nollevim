@@ -3,7 +3,7 @@
     enable = true;
     # preselect = "None";
     snippet.expand = "luasnip";
-    # mappingPresets = ["insert" "cmdline"];
+    mappingPresets = [ "insert" "cmdline" ];
     mapping = {
       "<C-b>" = ''cmp.mapping.scroll_docs(-4)'';
       "<C-f>" = ''cmp.mapping.scroll_docs(4)'';
