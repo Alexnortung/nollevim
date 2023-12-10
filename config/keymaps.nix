@@ -74,7 +74,7 @@
     {
       mode = "v";
       key = "p";
-      action = "\"_c Ph\"_x";
+      action = "\"_c <Esc>Ph\"_x";
     }
   ];
 }
