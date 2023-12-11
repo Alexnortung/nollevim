@@ -25,7 +25,7 @@
           };
         };
       };
-      eslint.enable = true;
+      # eslint.enable = true;
       gdscript.enable = true;
       tsserver = {
         enable = true;
