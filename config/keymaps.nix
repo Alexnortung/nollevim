@@ -44,6 +44,16 @@
       key = "<A-w>";
       action = ":Bdelete!<CR>";
     }
+    {
+      mode = "n";
+      key = "Y";
+      action = "6j";
+    }
+    {
+      mode = "n";
+      key = "U";
+      action = "6k";
+    }
     # Indent, stay in visual mode
     {
       mode = "v";
