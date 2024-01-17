@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   extraPlugins = with pkgs.vimPlugins; [
     editorconfig-nvim
     vim-sleuth # detects indentation
@@ -9,7 +9,7 @@
     nvim-rename-state
   ];
 
-  extraConfigLua = ''
+  extraConfigLua = /*lua*/ ''
     require('template-string').setup({
       filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }, -- filetypes where the plugin is active
       jsx_brackets = true, -- must add brackets to jsx attributes
@@ -22,7 +22,7 @@
     })
   '';
 
-  extraConfigLuaPost = ''
+  extraConfigLuaPost = /*lua*/ ''
     require('lsp_signature').setup({
         select_signature_key = '<M-n>',
     });
