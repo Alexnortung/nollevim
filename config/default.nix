@@ -25,6 +25,7 @@
     ./formatting.nix
     ./nvim-tree.nix
     ./options.nix
+    ./session.nix
     ./snippets.nix
     ./surround.nix
     ./telescope.nix

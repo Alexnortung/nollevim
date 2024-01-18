@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   plugins.treesitter = {
     enable = true;
     nixGrammars = true;
@@ -7,12 +7,12 @@
   };
 
   extraPlugins = with pkgs.vimPlugins; [
-    nvim-ts-rainbow # treesitter color brackets
+    # nvim-ts-rainbow # treesitter color brackets
     nvim-ts-autotag
     nvim-ts-context-commentstring
   ];
 
-  extraConfigLuaPost = ''
+  extraConfigLuaPost = /*lua*/ ''
     --require('nvim-treesitter.configs').setup {
     --    ['ensure_installed'] = 'all',
     --    ['highlight'] = {
