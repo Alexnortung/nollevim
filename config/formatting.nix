@@ -5,7 +5,7 @@
 }:
 let
   js = {
-    formatter = [ "eslint_d" "prettier_d" ];
+    formatter = [ "eslint_d" ];
     linter = "eslint_d";
   };
   langueageSetup = {
