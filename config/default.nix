@@ -3,7 +3,7 @@
 
   # Import all your configuration modules here
   imports = [
-    ./appearance/colorscheme.nix
+    ./appearance/colorscheme
     ./appearance/scrollbar.nix
     ./appearance/treesitter.nix
     ./misc
