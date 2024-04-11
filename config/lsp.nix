@@ -27,6 +27,12 @@
       };
       # eslint.enable = true;
       gdscript.enable = true;
+      svelte = {
+        enable = true;
+        extraOptions = {
+          # root_dir = { __raw = ''require("lspconfig.util").root_pattern("svelte.config.js")''; };
+        };
+      };
       tsserver = {
         enable = true;
         extraOptions = {
