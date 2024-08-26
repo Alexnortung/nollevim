@@ -2,8 +2,10 @@
   plugins.treesitter = {
     enable = true;
     nixGrammars = true;
-    indent = true;
-    ensureInstalled = "all";
+    settings = {
+      indent.enable = true;
+      ensure_installed = "all";
+    };
   };
 
   extraPlugins = with pkgs.vimPlugins; [

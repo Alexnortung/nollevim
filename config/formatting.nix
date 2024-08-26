@@ -10,10 +10,10 @@ let
   };
   langueageSetup = {
     javascript = js;
-    javascriptreact = js;
+    # javascriptreact = js;
     "javascript.jsx" = js;
     typescript = js;
-    typescriptreact = js;
+    # typescriptreact = js;
     "typescript.tsx" = js;
   };
   filetypes = lib.attrNames langueageSetup;

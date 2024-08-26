@@ -4,10 +4,14 @@
       closeCommand = "Bdelete! %d";
     in
     {
-      inherit closeCommand;
       enable = true;
-      rightMouseCommand = null;
-      middleMouseCommand = closeCommand;
-      indicator.icon = "▎";
+      settings = {
+        options = {
+          indicator.icon = "▎";
+          close_command = closeCommand;
+          middle_mouse_command = closeCommand;
+          right_mouse_command = null;
+        };
+      };
     };
 }

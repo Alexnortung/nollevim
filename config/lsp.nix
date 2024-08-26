@@ -3,7 +3,9 @@
     enable = true;
     servers = {
       # clangd.enable = true;
-      rnix-lsp.enable = true;
+      nixd = {
+        enable = true;
+      };
       pyright.enable = true;
       rust-analyzer = {
         enable = true;

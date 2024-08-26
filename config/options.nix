@@ -1,6 +1,6 @@
 {
   config = {
-    options = {
+    opts = {
       number = true; # sets numbers in the side
       relativenumber = true; # makes side numbers relative to the cursor
       expandtab = true; # nicer default tabs
