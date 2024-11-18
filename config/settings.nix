@@ -20,6 +20,7 @@ in {
       scrolloff = f 4; # keeps lines above and below
       colorcolumn = f null;
       guicursor = f null;
+      listchars = f "tab:|->,space: ,trail:•,extends:→,precedes:←,nbsp:␣";
     };
   };
 }
