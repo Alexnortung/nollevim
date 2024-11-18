@@ -1,35 +1,14 @@
+{ inputs, ... }:
+
 {
-  enableMan = false;
-
-  # Import all your configuration modules here
   imports = [
-    ./appearance/colorscheme
-    ./appearance/scrollbar.nix
-    ./appearance/treesitter.nix
-    ./misc
+    inputs.Neve.nixvimModule
+    ./colorscheme
+    ./lsp
+    ./ui
+    ./utils
 
-    # Files
-    ./autopairs.nix
-    ./basic-plugins.nix
-    ./bufferline.nix
-    ./commenting.nix
-    ./completion.nix
-    ./copilot.nix
-    ./extra-syntax-highlight.nix
-    ./globals.nix
-    ./git.nix
     ./keymaps.nix
-    ./leap.nix
-    ./lsp.nix
-    ./markdown.nix
-    ./formatting.nix
-    ./nvim-tree.nix
-    ./options.nix
-    ./session.nix
-    ./snippets.nix
-    ./surround.nix
-    ./telescope.nix
-    # ./terminal.nix
-    ./which-key.nix
+    ./settings.nix
   ];
 }

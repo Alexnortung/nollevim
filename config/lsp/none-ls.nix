@@ -1,0 +1,3 @@
+{ ... }: {
+    none-ls.enable = true;
+}

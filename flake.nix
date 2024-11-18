@@ -7,6 +7,12 @@
       url = "github:NixNeovim/NixNeovimPlugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    Neve = {
+      # url = "github:redyf/Neve";
+      url = "github:Alexnortung/Neve/enable-keymaps";
+      inputs.nixvim.follows = "nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       # url = "github:Alexnortung/nixvim/intelephense";
