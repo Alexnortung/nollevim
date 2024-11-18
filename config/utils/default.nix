@@ -1,5 +1,5 @@
 {
-  imports = [ ./telescope.nix ];
+  imports = [ ./autopairs.nix ./telescope.nix ];
 
   neocord.enable = false;
 }
