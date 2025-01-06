@@ -26,6 +26,7 @@
         };
       };
       # eslint.enable = true;
+      biome.enable = true;
       gdscript.enable = true;
       svelte = {
         enable = true;
@@ -50,7 +51,22 @@
       volar.enable = true;
       # elixirls.enable = true;
       tailwindcss.enable = true;
-      intelephense.enable = true;
+      intelephense = {
+        enable = true;
+        extraOptions = {
+
+          settings = {
+            intelephense = {
+              files = {
+                maxSize = 3200000;
+              };
+              file = {
+                maxSize = 3200000;
+              };
+            };
+          };
+        };
+      };
     };
   };
   # plugins.lsp-lines = {
