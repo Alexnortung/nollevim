@@ -5,12 +5,18 @@
   },
   "contributes": {
     "snippets": [
-        {
-            "language": [
-                "typescriptreact"
-            ],
-            "path": "./react-ts.json"
-        }
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "./react-ts.json"
+      },
+      {
+        "language": [
+          "nix"
+        ],
+        "path": "./nix.json"
+      }
     ]
   }
 }

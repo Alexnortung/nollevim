@@ -1,0 +1,21 @@
+{
+  "module": {
+    "prefix": "module",
+    "body": [
+      "{ lib, config, pkgs, ... }:",
+      "",
+      "let",
+      "  cfg = config.${1:modulePath};",
+      "in",
+      "{",
+      "  options.${1:modulePath} = {",
+      "    $2",
+      "  };",
+      "",
+      "  config = {",
+      "    $0",
+      "  };",
+      "}"
+    ]
+  }
+}
