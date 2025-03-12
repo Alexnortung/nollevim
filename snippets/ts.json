@@ -1,0 +1,34 @@
+{
+  "Payload Config Object": {
+    "prefix": "_plconfig",
+    "body": [
+      "import type { Block } from 'payload';",
+      "",
+      "export const $1: Block = {",
+      "  slug: '$2',",
+      "  interfaceName: '$1',",
+      "  imageURL: '/images/block-thumbnails/$2.jpg',",
+      "  labels: {",
+      "    singular: '$1',",
+      "    plural: '$1s',",
+      "  },",
+      "  fields: [",
+      "    $0",
+      "  ],",
+      "}"
+    ],
+    "description": "Creates a Payloadcms config object"
+  },
+  "Payload Field Object": {
+    "prefix": "_plfield",
+    "body": [
+      "{",
+      "  type: '$1',",
+      "  name: '$2',",
+      "  label: '$3',",
+      "  localized: true,",
+      "},"
+    ],
+    "description": "Creates a Payloadcms field type object"
+  }
+}

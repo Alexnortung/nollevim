@@ -38,5 +38,25 @@
   "Create barrel": {
     "prefix": "bar",
     "body": "export { default${0:, } } from './$1';"
+  },
+  "Payload Component": {
+    "prefix": "_plcomp",
+    "body": [
+      "import type { $1 as $1Props } from '@/payload-types';",
+      "import BaseBlock from \"../base-block/BaseBlock\";",
+      "import type { BC } from '@/lib/types/block-props';",
+      "",
+      "const $1Block: BC<$1Props> = ({block, locale}) => {",
+      "const {$0} = block;",
+      "",
+      "return (",
+      "  <BaseBlock>",
+      "  </BaseBlock>",
+      ");",
+      "};",
+      "",
+      "export default $1Block;"
+    ],
+    "description": "Adding a base component for Payloadcms boilerplate"
   }
 }

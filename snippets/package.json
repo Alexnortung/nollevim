@@ -13,6 +13,12 @@
       },
       {
         "language": [
+          "typescript"
+        ],
+        "path": "./ts.json"
+      },
+      {
+        "language": [
           "nix"
         ],
         "path": "./nix.json"
