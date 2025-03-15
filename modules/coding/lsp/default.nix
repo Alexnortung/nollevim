@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./lsp-nvim.nix
+  ];
+}
