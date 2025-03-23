@@ -9,7 +9,12 @@ in
     enable = lib.mkEnableOption "lsp-nvim";
     keymaps = {
       # enable = lib.mkEnableKeymaps "lsp-nvim";
-      enable = lib.mkEnableOption "Enable keymaps for lsp-nvim";
+      enable = lib.mkOption {
+        default = true;
+        description = ''
+          Enable keymaps for LSP.
+        '';
+      };
     };
   };
   config = mkIf cfg.enable {

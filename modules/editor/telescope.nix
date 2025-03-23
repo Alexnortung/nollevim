@@ -18,8 +18,11 @@ in
   config = lib.mkIf cfg.enable {
     plugins.telescope = {
       enable = true;
-
     };
+
+    extraPackages = with pkgs; [
+      ripgrep # ripgrep is required for telescope to live_grep to work
+    ];
 
     keymaps = lib.mkIf cfg.enableKeymaps [
       {

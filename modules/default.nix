@@ -7,6 +7,7 @@ in
   imports = [
     ./coding
     ./editor
+    ./keymaps
     ./ui
     ./util
 

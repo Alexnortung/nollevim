@@ -9,8 +9,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    extraPlugins = with pkgs.vimPlugins; [
-      editorconfig-nvim
-    ];
+    editorconfig = {
+      enable = true;
+    };
   };
 }

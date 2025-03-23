@@ -1,7 +1,16 @@
 { lib, config, pkgs, ... }:
 
 let
+  mkRaw = lib.nixvim.mkRaw;
   cfg = config.nollevim.coding.formatting;
+
+  webFormatter = {
+    __unkeyed-1 = "biome";
+    __unkeyed-2 = "prettierd";
+    __unkeyed-3 = "prettier";
+    __unkeyed-4 = "biome_fallback";
+    stop_after_first = true;
+  };
 in
 {
   options.nollevim.coding.formatting = {
@@ -30,47 +39,54 @@ in
           end
         '';
         formatters_by_ft = {
-          html = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
-          css = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
-          javascript = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
-          javascriptreact = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
-          typescript = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
-          typescriptreact = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
+          html = webFormatter;
+          css = webFormatter;
+          json = webFormatter;
+          yaml = webFormatter;
+          markdown = webFormatter;
+          javascript = webFormatter;
+          javascriptreact = webFormatter;
+          typescript = webFormatter;
+          typescriptreact = webFormatter;
           java = [ "google-java-format" ];
           python = [ "black" ];
           lua = [ "stylua" ];
           nix = [ "nixfmt" ];
-          markdown = {
-            __unkeyed-1 = "prettierd";
-            __unkeyed-2 = "prettier";
-            stop_after_first = true;
-          };
           rust = [ "rustfmt" ];
         };
+
+        formatters =
+          let
+            prettierCond = mkRaw ''
+              function(self, ctx)
+                return vim.fs.find({ 
+                  '.prettierrc', 
+                  '.prettierrc.js', 
+                  '.prettierrc.json', 
+                  '.prettierrc.yml', 
+                  '.prettierrc.yaml', 
+                  'prettier.config.js' 
+                }, { path = ctx.filename, upward = true })[1] ~= nil
+              end
+            '';
+          in
+          {
+            prettier = {
+              condition = prettierCond;
+            };
+            biome = {
+              condition = mkRaw ''
+                function(self, ctx)
+                  return vim.fs.find({ 'biome.json' }, { path = ctx.filename, upward = true })[1] ~= nil
+                end
+              '';
+            };
+            biome_fallback = {
+              # "inherit" = "biome";
+              command = "biome";
+              args = [ "format" "--stdin-file-path" "$FILENAME" ];
+            };
+          };
       };
     };
 
@@ -113,5 +129,37 @@ in
         };
       }
     ];
+
+    userCommands = {
+      DisableAutoformat = {
+        command = "let g:disable_autoformat = 1";
+      };
+      EnableAutoformat = {
+        command = "let g:disable_autoformat = 0";
+      };
+    };
+
+    # extraConfigLuaPre = /*lua*/ ''
+    #   function ConformGetCurrentFormatter()
+    #     local conform = require("conform")
+    #     local formatters = conform.list_formatters_for_buffer()
+    #     if #formatters == 0 then
+    #       print("No formatters available for this buffer")
+    #     else
+    #       for _, formatter in ipairs(formatters) do
+    #         if formatter.available then
+    #           print(string.format("Available formatter: %s%s", 
+    #             formatter.name,
+    #             formatter.primary and " (primary)" or ""
+    #           ))
+    #         end
+    #       end
+    #     end
+    #   end
+    # '';
+    #
+    # userCommands = {
+    #   ConformInfo
+    # };
   };
 }
