@@ -11,6 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     plugins.lint = {
       enable = true;
+      autoCmd = null;
       lintersByFt = {
         c = [ "cpplint" ];
         cpp = [ "cpplint" ];
@@ -18,11 +19,11 @@ in
         nix = [ "statix" ];
         lua = [ "selene" ];
         python = [ "flake8" ];
-        javascript = [ "eslint_d" ];
-        javascriptreact = [ "eslint_d" ];
-        typescript = [ "eslint_d" ];
-        typescriptreact = [ "eslint_d" ];
-        json = [ "jsonlint" ];
+        javascript = [ "eslint_d" "biomejs" ];
+        javascriptreact = [ "eslint_d" "biomejs" ];
+        typescript = [ "eslint_d" "biomejs" ];
+        typescriptreact = [ "eslint_d" "biomejs" ];
+        json = [ "jsonlint" "biomejs" ];
         java = [ "checkstyle" ];
         haskell = [ "hlint" ];
         bash = [ "shellcheck" ];
