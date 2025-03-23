@@ -7,6 +7,8 @@ in
   imports = [
     ./completion
     ./git
+    ./session-restoration
+    ./treesitter
 
     ./leap.nix
     ./telescope.nix
@@ -22,7 +24,9 @@ in
       completion.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       leap.enable = lib.mkDefault true;
+      session-restoration.enable = lib.mkDefault true;
       telescope.enable = lib.mkDefault true;
+      treesitter.enable = lib.mkDefault true;
       which-key.enable = lib.mkDefault true;
     };
   };

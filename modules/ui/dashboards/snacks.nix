@@ -12,9 +12,12 @@ in
     nollevim.snacks.enable = true;
 
     plugins.snacks.settings.dashboard = {
+      enabled = true;
       preset = {
         header = "Welcome to nollevim";
       };
+      sections = [{ section = "header"; }];
     };
+
   };
 }

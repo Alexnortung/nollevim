@@ -9,6 +9,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    plugins.snacks.enable = true;
+    plugins.snacks = {
+      enable = true;
+    };
   };
 }

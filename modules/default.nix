@@ -7,7 +7,6 @@ in
   imports = [
     ./coding
     ./editor
-    ./treesitter
     ./ui
     ./util
 
@@ -27,7 +26,6 @@ in
     nollevim = {
       coding.enable = lib.mkDefault true;
       editor.enable = lib.mkDefault true;
-      treesitter.enable = lib.mkDefault true;
       ui.enable = lib.mkDefault true;
       options.enable = lib.mkDefault true;
     };

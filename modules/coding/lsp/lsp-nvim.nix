@@ -8,7 +8,8 @@ in
   options.nollevim.coding.lsp-nvim = {
     enable = lib.mkEnableOption "lsp-nvim";
     keymaps = {
-      enable = lib.mkEnableKeymaps "lsp-nvim";
+      # enable = lib.mkEnableKeymaps "lsp-nvim";
+      enable = lib.mkEnableOption "Enable keymaps for lsp-nvim";
     };
   };
   config = mkIf cfg.enable {

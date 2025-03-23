@@ -38,6 +38,7 @@ in
           "l" = "open";
           "h" = "close_node";
           # "<leader>p"
+
         };
       };
     };
@@ -46,12 +47,34 @@ in
       {
         mode = "n";
         key = "<leader>fe";
-        action = "<cmd>Neotree toggle position=righte<cr>";
+        action = "<cmd>Neotree toggle position=right<CR>";
         options = {
           desc = "Toggle Neotree";
           silent = true;
         };
       }
+      {
+        mode = "n";
+        key = "<leader>fn";
+        action = "<cmd>Neotree reveal position=right<CR>";
+        options = {
+          desc = "Show Neotree and reveal current file";
+          silent = true;
+        };
+      }
     ];
+
+    # autoCmd = lib.mkIf config.plugins.persistence.enable [
+    #   {
+    #     event = "PersistenceSavePre";
+    #     command = ":Neotree close";
+    #   }
+    # ];
+
+    # extraConfigLuaPost = /*lua*/ ''
+    #   vim.api.nvim_create_autocmd("PersistenceSavePre", {
+    #     command = "Neotree close",
+    #   })
+    # '';
   };
 }

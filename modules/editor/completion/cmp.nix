@@ -11,6 +11,7 @@ in
   config =
     let
       luasnipEnabled = config.plugins.luasnip.enable;
+      copilotEnabled = config.nollevim.editor.completion.copilot.enable;
     in
     lib.mkIf cfg.enable {
       plugins.lspkind = {
@@ -20,12 +21,13 @@ in
         enable = true;
 
         settings = {
-          sources = [
-            { name = "nvim_lsp"; }
-          ] ++ (lib.optional luasnipEnabled { name = "luasnip"; }) ++ [
-            { name = "path"; }
-            { name = "buffer"; }
-          ];
+          sources =
+            lib.optional copilotEnabled { name = "copilot"; } ++ [
+              { name = "nvim_lsp"; }
+            ] ++ (lib.optional luasnipEnabled { name = "luasnip"; }) ++ [
+              { name = "path"; }
+              { name = "buffer"; }
+            ];
 
           formatting = {
             fields = [

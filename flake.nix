@@ -2,7 +2,6 @@
   description = "Alexnortung's Nixvim config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     plugins = {
       url = "github:NixNeovim/NixNeovimPlugins";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +10,6 @@
       url = "github:nix-community/nixvim";
       # url = "github:Alexnortung/nixvim/intelephense";
       # url = "path:/home/alexander/source/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
@@ -24,10 +22,19 @@
     } @ inputs:
     let
       config = import ./config; # import the module directly
+      modules = import ./modules;
+      nixpkgsConfig = {
+        allowUnfree = true;
+      };
     in
-    flake-utils.lib.eachDefaultSystem (system:
+    {
+      nixvimModule = modules;
+    } // flake-utils.lib.eachDefaultSystem (system:
     let
-      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config = nixpkgsConfig;
+      };
       nixvim' = nixvim.legacyPackages.${system};
       nvim = nixvim'.makeNixvimWithModule {
         inherit pkgs;

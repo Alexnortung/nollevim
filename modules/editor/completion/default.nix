@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./cmp.nix
+    ./copilot.nix
     ./snippets
   ];
 
@@ -16,6 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     nollevim.editor.completion = {
       cmp.enable = lib.mkDefault true;
+      copilot.enable = lib.mkDefault true;
       snippets.enable = lib.mkDefault true;
     };
   };

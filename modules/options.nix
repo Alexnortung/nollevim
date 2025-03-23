@@ -18,7 +18,7 @@ in
       mapleader = lib.mkDefault " ";
     };
 
-    options = {
+    opts = {
       number = lib.mkDefault true; # sets numbers in the side
       relativenumber = lib.mkDefault true; # makes side numbers relative to the cursor
       expandtab = lib.mkDefault true; # nicer default tabs

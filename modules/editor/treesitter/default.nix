@@ -1,10 +1,10 @@
 { lib, config, ... }:
 
 let
-  cfg = config.nollevim.treesitter;
+  cfg = config.nollevim.editor.treesitter;
 in
 {
-  options.nollevim.treesitter = {
+  options.nollevim.editor.treesitter = {
     enable = lib.mkEnableOption "Enable treesitter";
   };
 
