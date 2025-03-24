@@ -7,6 +7,7 @@ in
   imports = [
     ./autopairs.nix
     ./editorconfig.nix
+    ./surround.nix
     ./template-string-nvim.nix
     ./ts-comments.nix
   ];
@@ -19,6 +20,7 @@ in
     nollevim.coding.extra = {
       autopairs.enable = lib.mkDefault true;
       editorconfig.enable = lib.mkDefault true;
+      surround.enable = lib.mkDefault true;
       template-string-nvim.enable = lib.mkDefault true;
       ts-comments.enable = lib.mkDefault true;
     };

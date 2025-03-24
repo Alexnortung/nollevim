@@ -82,9 +82,8 @@ in
               '';
             };
             biome_fallback = {
-              # "inherit" = "biome";
               command = "biome";
-              args = [ "format" "--stdin-file-path" "$FILENAME" ];
+              args = [ "format" "--fix" "--stdin-file-path" "$FILENAME" ];
             };
           };
       };
