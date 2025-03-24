@@ -11,13 +11,14 @@ let
     __unkeyed-4 = "biome_fallback";
     stop_after_first = true;
   };
-in
-{
+in {
   options.nollevim.coding.formatting = {
     enable = lib.mkEnableOption "formatting";
   };
 
   config = lib.mkIf cfg.enable {
+    extraPackages = with pkgs; [ nixfmt-rfc-style ];
+
     plugins.conform-nvim = {
       enable = true;
 
@@ -55,37 +56,33 @@ in
           rust = [ "rustfmt" ];
         };
 
-        formatters =
-          let
-            prettierCond = mkRaw ''
+        formatters = let
+          prettierCond = mkRaw ''
+            function(self, ctx)
+              return vim.fs.find({ 
+                '.prettierrc', 
+                '.prettierrc.js', 
+                '.prettierrc.json', 
+                '.prettierrc.yml', 
+                '.prettierrc.yaml', 
+                'prettier.config.js' 
+              }, { path = ctx.filename, upward = true })[1] ~= nil
+            end
+          '';
+        in {
+          prettier = { condition = prettierCond; };
+          biome = {
+            condition = mkRaw ''
               function(self, ctx)
-                return vim.fs.find({ 
-                  '.prettierrc', 
-                  '.prettierrc.js', 
-                  '.prettierrc.json', 
-                  '.prettierrc.yml', 
-                  '.prettierrc.yaml', 
-                  'prettier.config.js' 
-                }, { path = ctx.filename, upward = true })[1] ~= nil
+                return vim.fs.find({ 'biome.json' }, { path = ctx.filename, upward = true })[1] ~= nil
               end
             '';
-          in
-          {
-            prettier = {
-              condition = prettierCond;
-            };
-            biome = {
-              condition = mkRaw ''
-                function(self, ctx)
-                  return vim.fs.find({ 'biome.json' }, { path = ctx.filename, upward = true })[1] ~= nil
-                end
-              '';
-            };
-            biome_fallback = {
-              command = "biome";
-              args = [ "format" "--fix" "--stdin-file-path" "$FILENAME" ];
-            };
           };
+          biome_fallback = {
+            command = "biome";
+            args = [ "format" "--fix" "--stdin-file-path" "$FILENAME" ];
+          };
+        };
       };
     };
 
@@ -130,12 +127,8 @@ in
     ];
 
     userCommands = {
-      DisableAutoformat = {
-        command = "let g:disable_autoformat = 1";
-      };
-      EnableAutoformat = {
-        command = "let g:disable_autoformat = 0";
-      };
+      DisableAutoformat = { command = "let g:disable_autoformat = 1"; };
+      EnableAutoformat = { command = "let g:disable_autoformat = 0"; };
     };
 
     # extraConfigLuaPre = /*lua*/ ''
