@@ -8,7 +8,7 @@ in
     enable = lib.mkEnableOption "surround";
   };
   config = lib.mkIf cfg.enable {
-    plugins.surround = {
+    plugins.vim-surround = {
       enable = true;
     };
   };
