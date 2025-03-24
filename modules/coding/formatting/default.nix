@@ -11,13 +11,19 @@ let
     __unkeyed-4 = "biome_fallback";
     stop_after_first = true;
   };
+  formatterWithoutBiome = {
+    __unkeyed-1 = "prettierd";
+    __unkeyed-2 = "prettier";
+    __unkeyed-3 = "prettierd_fallback";
+    stop_after_first = true;
+  };
 in {
   options.nollevim.coding.formatting = {
     enable = lib.mkEnableOption "formatting";
   };
 
   config = lib.mkIf cfg.enable {
-    extraPackages = with pkgs; [ nixfmt-rfc-style ];
+    extraPackages = with pkgs; [ nixfmt-rfc-style prettierd nodePackages.prettier ];
 
     plugins.conform-nvim = {
       enable = true;
@@ -40,11 +46,11 @@ in {
           end
         '';
         formatters_by_ft = {
-          html = webFormatter;
+          html = formatterWithoutBiome;
           css = webFormatter;
           json = webFormatter;
-          yaml = webFormatter;
-          markdown = webFormatter;
+          yaml = formatterWithoutBiome;
+          markdown = formatterWithoutBiome;
           javascript = webFormatter;
           javascriptreact = webFormatter;
           typescript = webFormatter;
@@ -71,6 +77,7 @@ in {
           '';
         in {
           prettier = { condition = prettierCond; };
+          prettierd = { condition = prettierCond; };
           biome = {
             condition = mkRaw ''
               function(self, ctx)
@@ -81,6 +88,10 @@ in {
           biome_fallback = {
             command = "biome";
             args = [ "format" "--fix" "--stdin-file-path" "$FILENAME" ];
+          };
+          prettierd_fallback = {
+            command = "prettierd";
+            args = [ "--stdin-filepath" "$FILENAME" ];
           };
         };
       };
