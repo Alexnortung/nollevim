@@ -27,8 +27,8 @@ in
           };
         };
         suggestion = {
-          enabled = lib.mkDefault false;
-          autoTrigger = lib.mkDefault true;
+          enabled = lib.mkDefault true;
+          auto_trigger = lib.mkDefault true;
           debounce = lib.mkDefault 75;
           keymap = {
             accept = lib.mkDefault "<M-l>";
