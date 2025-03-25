@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   cfg = config.nollevim.coding.lsp-nvim;
   mkDefault = lib.mkDefault;
@@ -125,6 +130,24 @@ in
               };
               procMacro = {
                 enable = mkDefault true;
+              };
+            };
+          };
+
+          intelephense = {
+            enable = true;
+            package = pkgs.intelephense;
+            extraOptions = {
+
+              settings = {
+                intelephense = {
+                  files = {
+                    maxSize = 3200000;
+                  };
+                  file = {
+                    maxSize = 3200000;
+                  };
+                };
               };
             };
           };
