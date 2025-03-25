@@ -191,10 +191,10 @@ in
               action = "code_action";
               desc = "Code Action";
             };
-            "<C-k>" = mkDefault {
-              action = "signature_help";
-              desc = "Signature Help";
-            };
+            # "<C-k>" = mkDefault {
+            #   action = "signature_help";
+            #   desc = "Signature Help";
+            # };
           };
           diagnostic = {
             "<leader>cd" = mkDefault {
