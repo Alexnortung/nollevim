@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./appearance
     ./completion
     ./git
     ./session-restoration
@@ -21,6 +22,7 @@ in
 
   config = lib.mkIf cfg.enable {
     nollevim.editor = {
+      appearance.enable = lib.mkDefault true;
       completion.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       leap.enable = lib.mkDefault true;
