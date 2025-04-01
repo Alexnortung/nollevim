@@ -49,6 +49,9 @@ in
               };
             };
           };
+          dockerls = {
+            enable = mkDefault true;
+          };
           nixd = {
             enable = mkDefault true;
           };
@@ -90,6 +93,9 @@ in
               };
             };
           };
+          # turbo_ls = {
+          #   enable = true;
+          # };
           jsonls = {
             enable = mkDefault true;
             # extraOptions = {
