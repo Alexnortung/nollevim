@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   mkRaw = lib.nixvim.mkRaw;
@@ -17,13 +22,19 @@ let
     __unkeyed-3 = "prettierd_fallback";
     stop_after_first = true;
   };
-in {
+in
+{
   options.nollevim.coding.formatting = {
     enable = lib.mkEnableOption "formatting";
   };
 
   config = lib.mkIf cfg.enable {
-    extraPackages = with pkgs; [ nixfmt-rfc-style prettierd nodePackages.prettier ];
+    extraPackages = with pkgs; [
+      libxml2
+      nixfmt-rfc-style
+      prettierd
+      nodePackages.prettier
+    ];
 
     plugins.conform-nvim = {
       enable = true;
@@ -47,6 +58,10 @@ in {
         '';
         formatters_by_ft = {
           html = formatterWithoutBiome;
+          xml = {
+            __unkeyed-1 = "xmllint";
+            stop_after_first = true;
+          };
           css = webFormatter;
           json = webFormatter;
           yaml = formatterWithoutBiome;
@@ -62,38 +77,52 @@ in {
           rust = [ "rustfmt" ];
         };
 
-        formatters = let
-          prettierCond = mkRaw ''
-            function(self, ctx)
-              return vim.fs.find({ 
-                '.prettierrc', 
-                '.prettierrc.js', 
-                '.prettierrc.json', 
-                '.prettierrc.yml', 
-                '.prettierrc.yaml', 
-                'prettier.config.js' 
-              }, { path = ctx.filename, upward = true })[1] ~= nil
-            end
-          '';
-        in {
-          prettier = { condition = prettierCond; };
-          prettierd = { condition = prettierCond; };
-          biome = {
-            condition = mkRaw ''
+        formatters =
+          let
+            prettierCond = mkRaw ''
               function(self, ctx)
-                return vim.fs.find({ 'biome.json' }, { path = ctx.filename, upward = true })[1] ~= nil
+                return vim.fs.find({ 
+                  '.prettierrc', 
+                  '.prettierrc.js', 
+                  '.prettierrc.json', 
+                  '.prettierrc.yml', 
+                  '.prettierrc.yaml', 
+                  'prettier.config.js' 
+                }, { path = ctx.filename, upward = true })[1] ~= nil
               end
             '';
+          in
+          {
+            prettier = {
+              condition = prettierCond;
+            };
+            prettierd = {
+              condition = prettierCond;
+            };
+            biome = {
+              condition = mkRaw ''
+                function(self, ctx)
+                  return vim.fs.find({ 'biome.json' }, { path = ctx.filename, upward = true })[1] ~= nil
+                end
+              '';
+            };
+            biome_fallback = {
+              command = "biome";
+              args = [
+                "format"
+                "--fix"
+                "--stdin-file-path"
+                "$FILENAME"
+              ];
+            };
+            prettierd_fallback = {
+              command = "prettierd";
+              args = [
+                "--stdin-filepath"
+                "$FILENAME"
+              ];
+            };
           };
-          biome_fallback = {
-            command = "biome";
-            args = [ "format" "--fix" "--stdin-file-path" "$FILENAME" ];
-          };
-          prettierd_fallback = {
-            command = "prettierd";
-            args = [ "--stdin-filepath" "$FILENAME" ];
-          };
-        };
       };
     };
 
@@ -138,8 +167,12 @@ in {
     ];
 
     userCommands = {
-      DisableAutoformat = { command = "let g:disable_autoformat = 1"; };
-      EnableAutoformat = { command = "let g:disable_autoformat = 0"; };
+      DisableAutoformat = {
+        command = "let g:disable_autoformat = 1";
+      };
+      EnableAutoformat = {
+        command = "let g:disable_autoformat = 0";
+      };
     };
 
     # extraConfigLuaPre = /*lua*/ ''
@@ -151,7 +184,7 @@ in {
     #     else
     #       for _, formatter in ipairs(formatters) do
     #         if formatter.available then
-    #           print(string.format("Available formatter: %s%s", 
+    #           print(string.format("Available formatter: %s%s",
     #             formatter.name,
     #             formatter.primary and " (primary)" or ""
     #           ))
