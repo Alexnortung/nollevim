@@ -121,6 +121,9 @@ in
           pyright = {
             enable = mkDefault true;
           };
+          postgres_lsp = {
+            enable = mkDefault true;
+          };
           ruff = {
             enable = mkDefault true;
           };
