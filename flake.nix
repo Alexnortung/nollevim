@@ -11,15 +11,17 @@
       # url = "github:Alexnortung/nixvim/intelephense";
       # url = "path:/home/alexander/source/nixvim";
     };
+    unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
-    { nixpkgs
-    , nixvim
-    , flake-utils
-    , ...
-    } @ inputs:
+    {
+      nixpkgs,
+      nixvim,
+      flake-utils,
+      ...
+    }@inputs:
     let
       config = import ./config; # import the module directly
       modules = import ./modules;
@@ -29,35 +31,52 @@
     in
     {
       nixvimModule = modules;
-    } // flake-utils.lib.eachDefaultSystem (system:
-    let
-      pkgs = import nixpkgs {
-        inherit system;
-        config = nixpkgsConfig;
-      };
-      nixvim' = nixvim.legacyPackages.${system};
-      nvim = nixvim'.makeNixvimWithModule {
-        inherit pkgs;
-        module = config;
-        extraSpecialArgs = {
-          inherit inputs;
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        unstablePkgs = import inputs.unstable {
+          inherit system;
+          config = nixpkgsConfig;
         };
-      };
-    in
-    {
-      checks = {
-        # Run `nix flake check .` to verify that your config is not broken
-        # default = nixvimLib.${system}.check.mkTestDerivation "Nollevim" config;
-        # default = nixvimLib.${system}.check.mkTestDerivationFromNvim {
-        #   inherit nvim;
-        #   name = "Nollevim";
-        #   dontRun = false;
-        # };
-      };
+        pkgs = import nixpkgs {
+          inherit system;
+          config = nixpkgsConfig;
+          overlays = [
+            (final: prev: {
+              # Temporary, to avoid building nodejs 22
+              # Override version of nodejs
+              nodejs_22 = prev.nodejs;
+            })
+            (final: prev: {
+              vimPlugins = unstablePkgs.vimPlugins // prev.vimPlugins;
+            })
+          ];
+        };
+        nixvim' = nixvim.legacyPackages.${system};
+        nvim = nixvim'.makeNixvimWithModule {
+          inherit pkgs;
+          module = config;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+        };
+      in
+      {
+        checks = {
+          # Run `nix flake check .` to verify that your config is not broken
+          # default = nixvimLib.${system}.check.mkTestDerivation "Nollevim" config;
+          # default = nixvimLib.${system}.check.mkTestDerivationFromNvim {
+          #   inherit nvim;
+          #   name = "Nollevim";
+          #   dontRun = false;
+          # };
+        };
 
-      packages = {
-        # Lets you run `nix run .` to start nixvim
-        default = nvim;
-      };
-    });
+        packages = {
+          # Lets you run `nix run .` to start nixvim
+          default = nvim;
+        };
+      }
+    );
 }

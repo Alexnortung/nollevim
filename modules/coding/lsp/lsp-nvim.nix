@@ -56,16 +56,65 @@ in
             enable = mkDefault true;
           };
           ts_ls = {
+            enable = mkDefault false;
+            autostart = mkDefault true;
+            filetypes = mkDefault [
+              "javascript"
+              "javascriptreact"
+              "javascript.jsx"
+              "typescript"
+              "typescriptreact"
+              "typescript.tsx"
+            ];
+            extraOptions = {
+              settings = mkDefault {
+                javascript = {
+                  inlayHints = {
+                    includeInlayEnumMemberValueHints = true;
+                    includeInlayFunctionLikeReturnTypeHints = true;
+                    includeInlayFunctionParameterTypeHints = true;
+                    includeInlayParameterNameHints = "all";
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                    includeInlayPropertyDeclarationTypeHints = true;
+                    includeInlayVariableTypeHints = true;
+                    includeInlayVariableTypeHintsWhenTypeMatchesName = true;
+                  };
+                };
+                typescript = {
+                  inlayHints = {
+                    includeInlayEnumMemberValueHints = true;
+                    includeInlayFunctionLikeReturnTypeHints = true;
+                    includeInlayFunctionParameterTypeHints = true;
+                    includeInlayParameterNameHints = "all";
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                    includeInlayPropertyDeclarationTypeHints = true;
+                    includeInlayVariableTypeHints = true;
+                    includeInlayVariableTypeHintsWhenTypeMatchesName = true;
+                  };
+                };
+              };
+            };
+          };
+
+          vtsls = {
             enable = mkDefault true;
             autostart = mkDefault true;
             filetypes = mkDefault [
               "javascript"
               "javascriptreact"
+              "javascript.jsx"
               "typescript"
               "typescriptreact"
+              "typescript.tsx"
             ];
+
             extraOptions = {
               settings = mkDefault {
+
+                vtsls = {
+                  enableMoveToFileCodeAction = true;
+                  autoUseWorkspaceTsdk = true;
+                };
                 javascript = {
                   inlayHints = {
                     includeInlayEnumMemberValueHints = true;
