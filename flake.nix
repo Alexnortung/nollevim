@@ -51,6 +51,9 @@
             (final: prev: {
               vimPlugins = unstablePkgs.vimPlugins // prev.vimPlugins;
             })
+            (final: prev: {
+              unstable = unstablePkgs;
+            })
           ];
         };
         nixvim' = nixvim.legacyPackages.${system};
