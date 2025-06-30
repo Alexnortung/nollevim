@@ -143,6 +143,11 @@ in
               };
             };
           };
+
+          svelte = {
+            enable = mkDefault true;
+          };
+
           # turbo_ls = {
           #   enable = true;
           # };
