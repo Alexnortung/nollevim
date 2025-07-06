@@ -182,6 +182,10 @@ in
           ruff = {
             enable = mkDefault true;
           };
+          openscad_ls = {
+            enable = mkDefault true;
+            package = pkgs.openscad-lsp;
+          };
 
           rust_analyzer = {
             enable = mkDefault true;
