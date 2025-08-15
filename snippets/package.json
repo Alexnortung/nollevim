@@ -1,28 +1,26 @@
 {
-  "name": "alexnortung-snippets",
-  "engines": {
-    "vscode": "^1.11.0"
-  },
-  "contributes": {
-    "snippets": [
-      {
-        "language": [
-          "typescriptreact"
-        ],
-        "path": "./react-ts.json"
-      },
-      {
-        "language": [
-          "typescript"
-        ],
-        "path": "./ts.json"
-      },
-      {
-        "language": [
-          "nix"
-        ],
-        "path": "./nix.json"
-      }
-    ]
-  }
+	"name": "alexnortung-snippets",
+	"engines": {
+		"vscode": "^1.11.0"
+	},
+	"contributes": {
+		"snippets": [
+			{
+				"language": ["typescriptreact"],
+				"path": "./react-ts.json"
+			},
+			{
+				"language": ["typescript"],
+				"path": "./ts.json"
+			},
+			{
+				"language": ["typescript"],
+				"path": "./storybook.json"
+			},
+			{
+				"language": ["nix"],
+				"path": "./nix.json"
+			}
+		]
+	}
 }

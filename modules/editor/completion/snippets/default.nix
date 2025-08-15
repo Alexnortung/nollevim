@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./alex-snippets.nix
     ./friendly-snippets.nix
     ./luasnip.nix
   ];
@@ -15,6 +16,7 @@ in
 
   config = lib.mkIf cfg.enable {
     nollevim.editor.completion.snippets = {
+      alex-snippets.enable = lib.mkDefault true;
       luasnip.enable = lib.mkDefault true;
       friendly-snippets.enable = lib.mkDefault true;
     };

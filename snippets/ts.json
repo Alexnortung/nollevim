@@ -1,34 +1,62 @@
 {
-  "Payload Config Object": {
-    "prefix": "_plconfig",
-    "body": [
-      "import type { Block } from 'payload';",
-      "",
-      "export const $1: Block = {",
-      "  slug: '$2',",
-      "  interfaceName: '$1',",
-      "  imageURL: '/images/block-thumbnails/$2.jpg',",
-      "  labels: {",
-      "    singular: '$1',",
-      "    plural: '$1s',",
-      "  },",
-      "  fields: [",
-      "    $0",
-      "  ],",
-      "}"
-    ],
-    "description": "Creates a Payloadcms config object"
-  },
-  "Payload Field Object": {
-    "prefix": "_plfield",
-    "body": [
-      "{",
-      "  type: '$1',",
-      "  name: '$2',",
-      "  label: '$3',",
-      "  localized: true,",
-      "},"
-    ],
-    "description": "Creates a Payloadcms field type object"
-  }
+	"Payload Config Object": {
+		"prefix": "_plconfig",
+		"body": [
+			"import type { Block } from 'payload';",
+			"",
+			"export const $1: Block = {",
+			"  slug: '$2',",
+			"  interfaceName: '$1',",
+			"  imageURL: '/images/block-thumbnails/$2.jpg',",
+			"  labels: {",
+			"    singular: '$1',",
+			"    plural: '$1s',",
+			"  },",
+			"  fields: [",
+			"    $0",
+			"  ],",
+			"}"
+		],
+		"description": "Creates a Payloadcms config object"
+	},
+	"Payload Field Object": {
+		"prefix": "_plfield",
+		"body": [
+			"{",
+			"  type: '$1',",
+			"  name: '$2',",
+			"  label: '$3',",
+			"  localized: true,",
+			"},"
+		],
+		"description": "Creates a Payloadcms field type object"
+	},
+	"Storybook story starter": {
+		"prefix": "_sbstory",
+		"body": [
+			"import type { Meta, StoryObj } from '@storybook/nextjs';",
+			"import { fn } from 'storybook/test';",
+			"import $2 from './$1';",
+			"",
+			"const meta = {",
+			"\ttitle: '$3/$2',",
+			"\tcomponent: $2,",
+			"\tparameters: {",
+			"\t\tlayout: 'centered',",
+			"\t},",
+			"\ttags: ['autodocs'],",
+			"\targs: {",
+			"\t\t${4:arg},",
+			"\t},",
+			"} satisfies Meta<typeof $2>;",
+			"",
+			"export default meta;",
+			"type Story = StoryObj<typeof meta>;",
+			"",
+			"export const Default: Story = {",
+			"\targs: {},",
+			"};",
+			"$0"
+		]
+	}
 }

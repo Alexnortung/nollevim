@@ -1,62 +1,90 @@
 {
-  "Create component": {
-    "prefix": "cc",
-    "body": [
-      "type Props = {",
-      "};",
-      "",
-      "const ${1:componentName} = ({}: Props) => {",
-      "\treturn (",
-      "\t\t<>",
-      "\t\t\t$0",
-      "\t\t</>",
-      "\t);",
-      "};",
-      "",
-      "export default ${1:componentName};"
-    ]
-  },
-  "Create page": {
-    "prefix": "cp",
-    "body": [
-      "import { NextPage } from 'next';",
-      "",
-      "type Props = {",
-      "};",
-      "",
-      "const ${1:PageName}: NextPage<Props> = ({}) => {",
-      "\treturn (",
-      "\t\t<>",
-      "\t\t\t$0",
-      "\t\t</>",
-      "\t);",
-      "};",
-      "",
-      "export default ${1:PageName};"
-    ]
-  },
-  "Create barrel": {
-    "prefix": "bar",
-    "body": "export { default${0:, } } from './$1';"
-  },
-  "Payload Component": {
-    "prefix": "_plcomp",
-    "body": [
-      "import type { $1 as $1Props } from '@/payload-types';",
-      "import BaseBlock from \"../base-block/BaseBlock\";",
-      "import type { BC } from '@/lib/types/block-props';",
-      "",
-      "const $1Block: BC<$1Props> = ({block, locale}) => {",
-      "const {$0} = block;",
-      "",
-      "return (",
-      "  <BaseBlock>",
-      "  </BaseBlock>",
-      ");",
-      "};",
-      "",
-      "export default $1Block;"
-    ],
-    "description": "Adding a base component for Payloadcms boilerplate"
-  }
+	"Create component": {
+		"prefix": "cc",
+		"body": [
+			"type Props = {",
+			"};",
+			"",
+			"const ${1:componentName} = ({}: Props) => {",
+			"\treturn (",
+			"\t\t<>",
+			"\t\t\t$0",
+			"\t\t</>",
+			"\t);",
+			"};",
+			"",
+			"export default ${1:componentName};"
+		]
+	},
+	"Create page": {
+		"prefix": "cp",
+		"body": [
+			"import { NextPage } from 'next';",
+			"",
+			"type Props = {",
+			"};",
+			"",
+			"const ${1:PageName}: NextPage<Props> = ({}) => {",
+			"\treturn (",
+			"\t\t<>",
+			"\t\t\t$0",
+			"\t\t</>",
+			"\t);",
+			"};",
+			"",
+			"export default ${1:PageName};"
+		]
+	},
+	"Create barrel": {
+		"prefix": "bar",
+		"body": "export { default${0:, } } from './$1';"
+	},
+	"Payload Component": {
+		"prefix": "_plcomp",
+		"body": [
+			"import type { $1 as $1Props } from '@/payload-types';",
+			"import BaseBlock from \"../base-block/BaseBlock\";",
+			"import type { BC } from '@/lib/types/block-props';",
+			"",
+			"const $1Block: BC<$1Props> = ({block, locale}) => {",
+			"const {$0} = block;",
+			"",
+			"return (",
+			"  <BaseBlock>",
+			"  </BaseBlock>",
+			");",
+			"};",
+			"",
+			"export default $1Block;"
+		],
+		"description": "Adding a base component for Payloadcms boilerplate"
+	},
+	"Storybook story starter": {
+		"prefix": "_sbstory",
+		"body": [
+			"import type { Meta, StoryObj } from '@storybook/nextjs';",
+			"import { fn } from 'storybook/test';",
+			"import $2 from './$1';",
+			"",
+			"const meta = {",
+			"\ttitle: '$3/$2',",
+			"\tcomponent: $2,",
+			"\tparameters: {",
+			"\t\tlayout: 'centered',",
+			"\t},",
+			"\ttags: ['autodocs'],",
+			"\targs: {",
+			"\t\t${4:arg},",
+			"\t},",
+			"} satisfies Meta<typeof $2>;",
+			"",
+			"export default meta;",
+			"type Story = StoryObj<typeof meta>;",
+			"",
+			"export const Default: Story = {",
+			"\targs: {},",
+			"};",
+			"$0"
+		]
+	}
 }
