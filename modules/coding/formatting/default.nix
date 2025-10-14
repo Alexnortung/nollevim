@@ -111,6 +111,7 @@ in
               args = [
                 "format"
                 "--fix"
+                "--use-editorconfig=true"
                 "--stdin-file-path"
                 "$FILENAME"
               ];
