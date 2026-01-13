@@ -1,0 +1,15 @@
+{
+	"PgTap init test": {
+		"prefix": "_ttest",
+		"body": [
+			"BEGIN;",
+			"SELECT plan($1);",
+			"",
+			"$0",
+			"",
+			"SELECT * FROM finish();",
+			"ROLLBACK;"
+		],
+		"description": "Creates a pgTAP test scaffold"
+	}
+}

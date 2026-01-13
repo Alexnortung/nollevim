@@ -6,6 +6,10 @@
 	"contributes": {
 		"snippets": [
 			{
+				"language": ["sql"],
+				"path": "./sql.json"
+			},
+			{
 				"language": ["typescriptreact"],
 				"path": "./react-ts.json"
 			},
