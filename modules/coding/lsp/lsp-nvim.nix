@@ -98,6 +98,7 @@ in
           };
 
           vtsls = {
+            # Typescript tools instead
             enable = mkDefault true;
             autostart = mkDefault true;
             filetypes = mkDefault [
@@ -345,6 +346,10 @@ in
             "<leader>ca" = mkDefault {
               action = "code_action";
               desc = "Code Action";
+              mode = [
+                "n"
+                "v"
+              ];
             };
             # "<C-k>" = mkDefault {
             #   action = "signature_help";
@@ -419,5 +424,28 @@ in
         enable = true;
       };
     };
+
+    plugins.dressing = {
+      enable = true;
+    };
+
+    extraPlugins = [
+      pkgs.vimPlugins.nvim-vtsls
+    ];
+
+    extraConfigLuaPre = ''
+      require("lspconfig.configs").vtsls = require("vtsls").lspconfig -- set default server config, optional but recommended
+    '';
+    extraConfigLua = ''
+      require('vtsls').config({
+        -- automatically trigger renaming of extracted symbol
+        refactor_auto_rename = true,
+        refactor_move_to_file = {
+          -- If dressing.nvim is installed, telescope will be used for selection prompt. Use this to customize
+          -- the opts for telescope picker.
+          telescope_opts = function(items, default) end,
+        }
+      })
+    '';
   };
 }
