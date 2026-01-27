@@ -21,7 +21,7 @@ in
   config = lib.mkIf cfg.enable {
     nollevim.editor.movement = {
       leap.enable = lib.mkDefault true;
-      spider.enable = lib.mkDefault true;
+      spider.enable = lib.mkDefault false;
     };
   };
 }
