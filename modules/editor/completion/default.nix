@@ -8,6 +8,7 @@ in
     ./cmp.nix
     ./copilot.nix
     ./snippets
+    ./sidekick.nix
   ];
 
   options.nollevim.editor.completion = {
@@ -19,6 +20,7 @@ in
       cmp.enable = lib.mkDefault true;
       copilot.enable = lib.mkDefault true;
       snippets.enable = lib.mkDefault true;
+      sidekick.enable = lib.mkDefault true;
     };
   };
 }

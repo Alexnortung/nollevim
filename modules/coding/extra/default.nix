@@ -10,6 +10,7 @@ in
     ./refactoring.nix
     ./surround.nix
     ./template-string-nvim.nix
+    ./text-case.nix
     ./ts-comments.nix
   ];
 
@@ -24,6 +25,7 @@ in
       refactoring.enable = lib.mkDefault true;
       surround.enable = lib.mkDefault true;
       template-string-nvim.enable = lib.mkDefault true;
+      text-case.enable = lib.mkDefault true;
       ts-comments.enable = lib.mkDefault true;
     };
   };

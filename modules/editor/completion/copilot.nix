@@ -15,8 +15,8 @@ in
           enabled = lib.mkDefault false;
           autoRefresh = lib.mkDefault true;
           keymap = {
-            jumpPrev = lib.mkDefault "[[";
-            jumpNext = lib.mkDefault "]]";
+            # jumpPrev = lib.mkDefault "[[";
+            # jumpNext = lib.mkDefault "]]";
             accept = lib.mkDefault "<CR>";
             refresh = lib.mkDefault "gr";
             open = lib.mkDefault "<M-CR>";

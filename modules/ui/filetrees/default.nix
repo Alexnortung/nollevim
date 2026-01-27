@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.nollevim.ui.filetrees;
@@ -14,31 +19,35 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # TODO: move to neo-tree file
     plugins.neo-tree = {
       enable = true;
-      enableDiagnostics = lib.mkDefault true;
-      enableGitStatus = lib.mkDefault true;
-      enableModifiedMarkers = lib.mkDefault true;
-      enableRefreshOnWrite = lib.mkDefault true;
-      closeIfLastWindow = lib.mkDefault true;
-      popupBorderStyle = lib.mkDefault "rounded"; # Type: null or one of “NC”, “double”, “none”, “rounded”, “shadow”, “single”, “solid” or raw lua code
-      buffers = {
-        bindToCwd = false;
-        followCurrentFile = {
-          enabled = true;
-        };
-      };
-      window = {
-        width = 40;
-        height = 15;
-        autoExpandWidth = false;
-        mappings = {
-          "<space>" = "none";
-          "l" = "open";
-          "h" = "close_node";
-          # "<leader>p"
+      settings = {
+        enable_diagnostics = lib.mkDefault true;
+        enable_git_status = lib.mkDefault true;
+        enable_modified_markers = lib.mkDefault true;
+        enable_refresh_on_write = lib.mkDefault true;
+        close_if_last_window = lib.mkDefault true;
+        popup_border_style = lib.mkDefault "rounded"; # Type: null or one of “NC”, “double”, “none”, “rounded”, “shadow”, “single”, “solid” or raw lua code
 
+        buffers = {
+          bind_to_cwd = false;
+          follow_current_file = {
+            enabled = true;
+          };
+        };
+
+        window = {
+          width = 40;
+          height = 15;
+          # autoExpandWidth = false;
+          auto_expand_height = false;
+          mappings = {
+            "<space>" = "none";
+            "l" = "open";
+            "h" = "close_node";
+            # "<leader>p"
+
+          };
         };
       };
     };

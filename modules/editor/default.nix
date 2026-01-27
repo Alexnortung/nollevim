@@ -8,10 +8,10 @@ in
     ./appearance
     ./completion
     ./git
+    ./movement
     ./session-restoration
     ./treesitter
 
-    ./leap.nix
     ./telescope.nix
     ./which-key.nix
   ];
@@ -25,7 +25,7 @@ in
       appearance.enable = lib.mkDefault true;
       completion.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
-      leap.enable = lib.mkDefault true;
+      movement.enable = lib.mkDefault true;
       session-restoration.enable = lib.mkDefault true;
       telescope.enable = lib.mkDefault true;
       treesitter.enable = lib.mkDefault true;
