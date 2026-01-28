@@ -31,7 +31,7 @@ in
   config = lib.mkIf cfg.enable {
     extraPackages = with pkgs; [
       libxml2
-      nixfmt-rfc-style
+      nixfmt
       prettierd
       nodePackages.prettier
     ];
