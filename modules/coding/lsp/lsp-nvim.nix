@@ -171,9 +171,9 @@ in
           # eslint = {
           #   enable = mkDefault true;
           # };
-          biome = {
-            enable = mkDefault true;
-          };
+          # biome = {
+          #   enable = mkDefault true;
+          # };
           pyright = {
             enable = mkDefault true;
           };

@@ -4,6 +4,7 @@ let
 in
 {
   imports = [
+    ./biome.nix
     ./typescript-tools.nix
   ];
 
@@ -16,6 +17,7 @@ in
     # Add typescript-tools.nvim
     nollevim.languages.typescript = {
       typescript-tools.enable = lib.mkDefault true;
+      biome.enable = lib.mkDefault true;
     };
   };
 }
