@@ -31,6 +31,13 @@
 		],
 		"description": "Creates a Payloadcms field type object"
 	},
+	"Switch Exhaustive default": {
+		"prefix": "_ex",
+		"body": [
+			"type _ExhaustiveCheck = Assert<Equals<typeof $1, never>>;",
+			"return null;"
+		]
+	},
 	"Storybook story starter": {
 		"prefix": "_sbstory",
 		"body": [

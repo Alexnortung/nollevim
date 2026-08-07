@@ -59,6 +59,13 @@
 		],
 		"description": "Adding a base component for Payloadcms boilerplate"
 	},
+	"Switch Exhaustive default": {
+		"prefix": "_ex",
+		"body": [
+			"type _ExhaustiveCheck = Assert<Equals<typeof $1, never>>;",
+			"return null;"
+		]
+	},
 	"Storybook story starter": {
 		"prefix": "_sbstory",
 		"body": [
