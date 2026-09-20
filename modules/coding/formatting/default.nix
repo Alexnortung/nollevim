@@ -34,6 +34,7 @@ in
       nixfmt
       prettierd
       nodePackages.prettier
+      ruff
     ];
 
     plugins.conform-nvim = {
@@ -71,7 +72,7 @@ in
           typescript = webFormatter;
           typescriptreact = webFormatter;
           java = [ "google-java-format" ];
-          python = [ "black" ];
+          python = [ "ruff_format" ];
           lua = [ "stylua" ];
           nix = [ "nixfmt" ];
           rust = [ "rustfmt" ];

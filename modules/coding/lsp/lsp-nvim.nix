@@ -174,13 +174,13 @@ in
           biome = {
             enable = mkDefault true;
           };
-          pyright = {
-            enable = mkDefault true;
-          };
-          postgres_lsp = {
+          basedpyright = {
             enable = mkDefault true;
           };
           ruff = {
+            enable = mkDefault true;
+          };
+          postgres_lsp = {
             enable = mkDefault true;
           };
           openscad_ls = {
